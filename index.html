@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="AI 도구별 2D 이미지와 3D 리테일 오브젝트 비교 연구">
+  <title>AI Visual Exploration for Retail Objects</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="#top">AI Research &amp; Design</a>
+    <nav aria-label="주요 메뉴">
+      <a href="#overview">Overview</a>
+      <a href="#experiments">Experiments</a>
+      <a href="#insights">Insights</a>
+      <a href="#archive">Archive</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero section">
+      <div class="hero-copy">
+        <p class="eyebrow">Application Portfolio</p>
+        <h1>AI Visual<br>Exploration<br>for Retail Objects</h1>
+        <p class="hero-desc">같은 프롬프트를 여러 AI 도구에 적용해 미래적인 아이웨어 브랜드의 무드가 2D 이미지와 3D 오브젝트로 어떻게 다르게 해석되는지 비교한 AI Research &amp; Design 포트폴리오입니다.</p>
+        <div class="hero-tags">
+          <span>AI Research</span><span>Visual Experiment</span><span>Retail Object</span><span>2D to 3D</span>
+        </div>
+      </div>
+      <div class="hero-grid">
+        <figure><img src="gm_Portfolio_img2d/2D_Canva_Prompt 01.jpg" alt="Canva 캠페인 비주얼" loading="eager"></figure>
+        <figure><img src="gm_Portfolio_img2d/2D_Canva_Prompt 01-fail.jpg" alt="Canva 실패 결과" loading="eager"></figure>
+        <figure><img src="gm_Portfolio_img2d/2D_Canva_Prompt 02.jpg" alt="Canva 리테일 공간" loading="eager"></figure>
+        <figure><img src="gm_Portfolio_img2d/2D_Canva_Prompt 03.png" alt="Canva 그래픽 시스템" loading="eager"></figure>
+        <figure><img src="gm_Portfolio_img2d/2D_Codex_Prompt 02.png" alt="Codex 리테일 공간" loading="eager"></figure>
+        <figure><img src="gm_Portfolio_img2d/2D_MiriCanvas_Prompt 01_GPT Image 2.png" alt="MiriCanvas 캠페인 비주얼" loading="eager"></figure>
+      </div>
+    </section>
+
+    <section class="section stats" aria-label="프로젝트 지표">
+      <article><strong>22</strong><span>2D Images</span></article>
+      <article><strong>48</strong><span>3D Previews</span></article>
+      <article><strong>10</strong><span>GLB Files</span></article>
+      <article><strong>9</strong><span>Fail Archive</span></article>
+    </section>
+
+    <section id="overview" class="section split">
+      <div>
+        <p class="eyebrow">Project Overview</p>
+        <h2>AI를 이미지 생성 도구가 아닌 브랜드 경험 탐색 도구로 사용했습니다.</h2>
+      </div>
+      <div class="stack">
+        <article class="panel"><h3>Core Question</h3><p>같은 프롬프트를 여러 AI 도구에 입력했을 때, 각 도구는 미래적이고 초현실적인 아이웨어 브랜드의 세계관을 어떻게 다르게 해석하는가?</p></article>
+        <article class="panel"><h3>Application Point</h3><p>결과물을 나열하는 데 그치지 않고 실패 결과와 3D 확장 가능성까지 비교해 리테일 공간, 아이웨어 오브젝트, 디지털 아카이브 관점으로 정리했습니다.</p></article>
+      </div>
+    </section>
+
+    <section class="section">
+      <p class="eyebrow">Shared Prompt System</p>
+      <h2>세 가지 프롬프트로 캠페인, 공간, 그래픽 시스템을 비교했습니다.</h2>
+      <div class="prompt-grid">
+        <article class="panel"><span>Prompt 01</span><h3>Fashion Campaign Visual</h3><p>Futuristic eyewear fashion campaign image, dark showroom, reflective sunglasses, chrome styling, surreal luxury mood, cinematic lighting, minimal composition.</p></article>
+        <article class="panel"><span>Prompt 02</span><h3>Retail Space Mood</h3><p>Surreal futuristic retail space for a luxury eyewear brand, mirror walls, chrome objects, transparent lens sculptures, dark minimal atmosphere, immersive showroom mood.</p></article>
+        <article class="panel"><span>Prompt 03</span><h3>Abstract Brand Graphic System</h3><p>Abstract visual graphic system for a futuristic eyewear fashion brand, distorted lens shapes, chrome reflections, transparent glass textures, dark gradient background, minimal poster composition.</p></article>
+      </div>
+    </section>
+
+    <section id="experiments" class="section">
+      <p class="eyebrow">Experiment 01</p>
+      <h2>2D Visual Comparison</h2>
+      <p class="lead">Canva, Codex, Firefly, Flow, Grok, MiriCanvas, Nano Banana 2 결과를 동일 프롬프트 기준으로 비교했습니다.</p>
+      <div class="tabs tabs-2d" role="tablist" aria-label="2D 프롬프트">
+        <button class="active" data-filter="1">Prompt 01</button>
+        <button data-filter="2">Prompt 02</button>
+        <button data-filter="3">Prompt 03</button>
+      </div>
+      <div id="gallery2d" class="gallery"></div>
+    </section>
+
+    <section class="section">
+      <p class="eyebrow">3D Prompt System</p>
+      <h2>3D 오브젝트 실험은 리테일 조형물, 아이웨어 설치물, 제품 진열 구조로 나누어 비교했습니다.</h2>
+      <div class="prompt-grid">
+        <article class="panel"><span>Prompt 01</span><h3>Robotic Retail Object</h3><p>Robotic retail display object for an eyewear brand, combining eye motifs, polished chrome metal, glossy lens surfaces, mechanical joints, and sculptural futuristic form.</p></article>
+        <article class="panel"><span>Prompt 02</span><h3>Mirror Lens Robotic Installation</h3><p>Futuristic showroom sculpture combining mirror, lens, chrome metal, transparent acrylic, and biomorphic form.</p></article>
+        <article class="panel"><span>Prompt 03</span><h3>Kinetic Robotic Eyewear Display</h3><p>Kinetic robotic retail display structure with a rotating circular frame, floating lens holders, chrome mechanical arms, and a transparent acrylic base.</p></article>
+      </div>
+    </section>
+
+    <section class="section">
+      <p class="eyebrow">Experiment 02</p>
+      <h2>3D Object Exploration</h2>
+      <p class="lead">2D 이미지에서 나온 브랜드 무드를 초현실적 오브젝트, 제품 디스플레이, 디지털 리테일 경험으로 확장할 수 있는지 확인했습니다.</p>
+      <div class="tabs tabs-3d" role="tablist" aria-label="3D 프롬프트">
+        <button class="active" data-filter="1">Prompt 01</button>
+        <button data-filter="2">Prompt 02</button>
+        <button data-filter="3">Prompt 03</button>
+      </div>
+      <div id="gallery3d" class="gallery"></div>
+    </section>
+
+    <section id="archive" class="section">
+      <p class="eyebrow">Process Archive</p>
+      <h2>Failed Results</h2>
+      <p class="lead">의도와 다르게 나온 결과도 버리지 않고, 프롬프트 한계와 도구별 생성 경향을 파악하는 근거로 분류했습니다.</p>
+      <div id="failGallery" class="gallery"></div>
+    </section>
+
+    <section id="insights" class="section split">
+      <div>
+        <p class="eyebrow">Insights for Retail Experience</p>
+        <h2>AI 실험을 리테일 공간과 콘텐츠 경험으로 연결합니다.</h2>
+      </div>
+      <div class="insight-list">
+        <article><span>01</span><div><h3>브랜드 콘셉트 탐색</h3><p>캠페인, 공간, 오브젝트 방향을 빠르게 발산하고 비교했습니다.</p></div></article>
+        <article><span>02</span><div><h3>2D에서 3D로 확장</h3><p>결과 이미지를 실제 전시와 리테일 오브젝트로 연결할 수 있는지 검토했습니다.</p></div></article>
+        <article><span>03</span><div><h3>실패 결과까지 분석</h3><p>한계와 브랜드 무드 불일치를 다음 프롬프트 조정 기준으로 정리했습니다.</p></div></article>
+        <article><span>04</span><div><h3>웹 경험으로 구조화</h3><p>결과 이미지와 3D 자료를 비교 가능한 디지털 아카이브로 정리했습니다.</p></div></article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">AI Visual Exploration for Retail Objects · Portfolio Archive</footer>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
