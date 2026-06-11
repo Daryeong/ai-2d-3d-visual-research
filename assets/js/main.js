@@ -14,11 +14,29 @@ fails: {
 2: ['2D_Nano Banana 2_Prompt 02_fail (1).png','2D_Nano Banana 2_Prompt 02_fail (2).png','2D_Nano Banana 2_Prompt 02_fail (3).png'],
 3: ['2D_Grok_Prompt 03_fail.jpg','2D_Flow_Prompt 03_Nano Banana 2_fail.jpeg','2D_Nano Banana 2_Prompt 03_fail.png']
 },
+glb: {
+1: [
+{label:'Copilot 3D Prompt 01', src:'gm_Portfolio_img3d/3D_Copilot_Prompt 01.glb'},
+{label:'Copilot 3D Prompt 02', src:'gm_Portfolio_img3d/3D_Copilot_Prompt 02.glb'},
+{label:'Copilot 3D Prompt 03', src:'gm_Portfolio_img3d/3D_Copilot_Prompt 03.glb'},
+{label:'Womp Prompt 01', src:'gm_Portfolio_img3d/3D_Womp_Prompt 01.glb'},
+{label:'Womp Prompt 02', src:'gm_Portfolio_img3d/3D_Womp_Prompt 02.glb'},
+{label:'Womp Prompt 03', src:'gm_Portfolio_img3d/3D_Womp_Prompt 03.glb'},
+{label:'Tencent Hunyuan3D Prompt 01', src:'gm_Portfolio_img3d/3D_Tencent_Prompt 01.glb'},
+{label:'Tencent Hunyuan3D Prompt 01-2', src:'gm_Portfolio_img3d/3D_Tencent_Prompt 01(2).glb'},
+{label:'Tencent Hunyuan3D Prompt 02', src:'gm_Portfolio_img3d/3D_Tencent_Prompt 02.glb'},
+{label:'Tencent Hunyuan3D Prompt 03', src:'gm_Portfolio_img3d/3D_Tencent_Prompt 03.glb'},
+{label:'Codex Prompt 01', src:'gm_Portfolio_img3d/3D_Codex_Prompt 01_Blender.glb'},
+{label:'Codex Prompt 02', src:'gm_Portfolio_img3d/3D_Codex_Prompt 02_Blender.glb'},
+{label:'Codex Prompt 03', src:'gm_Portfolio_img3d/3D_Codex_Prompt 03_Blender.glb'}
+],
+2: [],
+3: []
+},
 more: {
 '2D_Canva_Prompt 01.jpg': ['2D_Canva_Prompt 01-fail.jpg']
 },
 };
-
 const descriptions = {
 '2D_Nano Banana 2_Prompt 01_fail (2).png': '배경 구성이 아쉬워 의도한 방향과 다르게 표현되었습니다.',
 '2D_Nano Banana 2_Prompt 01_fail.png': '네온 느낌이 강해 배경과 모델 착장이 의도한 방향과 다르게 표현되었습니다.',
@@ -29,7 +47,6 @@ const descriptions = {
 '2D_Flow_Prompt 03_Nano Banana 2_fail.jpeg': '안경 프레임보다 렌즈가 더 강하게 강조되어 의도한 균형과 다르게 표현되었습니다.',
 '2D_Nano Banana 2_Prompt 03_fail.png': '안경이 겹치면서 이미지가 뭉개져 전체 형태가 불안정하게 보였습니다.'
 };
-
 const toolName = (name, section = 'main') => {
 if (name.includes('Flow_Prompt') && name.includes('Nano Banana 2')) return 'Nano Banana 2';
 if (name.includes('MiriCanvas_Prompt') && name.includes('GPT Image 2')) return 'GPT Image 2';
@@ -87,9 +104,10 @@ document.querySelectorAll('.tabs-2d button').forEach(b=>b.classList.remove('acti
 btn.classList.add('active');
 render2d(btn.dataset.filter);
 }));
-document.querySelectorAll('.tabs-3d button').forEach(btn=>btn.addEventListener('click',()=>{
-document.querySelectorAll('.tabs-3d button').forEach(b=>b.classList.remove('active'));
+document.querySelectorAll('.tabs-3d button[data-filter]').forEach(btn=>btn.addEventListener('click',()=>{
+document.querySelectorAll('.tabs-3d button[data-filter]').forEach(b=>b.classList.remove('active'));
 btn.classList.add('active');
+current3dPrompt = Number(btn.dataset.filter);
 render3d(btn.dataset.filter);
 }));
 document.querySelectorAll('.tabs-fail button').forEach(btn=>btn.addEventListener('click',()=>{
@@ -136,4 +154,100 @@ more.hidden = true;
 }
 overlay.classList.add('open');
 }
+let current3dPrompt = 1;
+function renderGlbViewer(num = current3dPrompt){
+  const stack = document.querySelector('#glbViewerStack');
+  const promptTitle = document.querySelector('#glbPromptTitle');
+  if(!stack || !promptTitle) return;
+  promptTitle.textContent = '13 GLB Models';
+  stack.innerHTML = '';
+  const models = DATA.glb[1] || [];
+  const wrap = document.createElement('div');
+  wrap.className = 'glb-viewer-wrap';
+  const aside = document.createElement('aside');
+  aside.className = 'glb-viewer-aside';
+  const main = document.createElement('section');
+  main.className = 'glb-viewer-main';
+  const renderMain = (model) => {
+    main.innerHTML = '';
+    const info = document.createElement('div');
+    info.className = 'glb-info';
+    const titleBox = document.createElement('div');
+    const h2 = document.createElement('h2');
+    h2.textContent = model.label;
+    titleBox.appendChild(h2);
+    info.appendChild(titleBox);
+    if(model.src){
+      const actions = document.createElement('div');
+      actions.className = 'glb-actions';
+      const download = document.createElement('a');
+      download.className = 'glb-btn';
+      download.href = encodeURI(model.src);
+      download.download = model.src.split('/').pop();
+      download.textContent = 'GLB 다운로드';
+      actions.appendChild(download);
+      info.appendChild(actions);
+    }
+    main.appendChild(info);
+    if(model.src){
+      const viewer = document.createElement('model-viewer');
+      viewer.id = 'glbMainViewer';
+      viewer.setAttribute('src', encodeURI(model.src));
+      viewer.setAttribute('camera-controls', '');
+      viewer.setAttribute('auto-rotate', '');
+      viewer.setAttribute('shadow-intensity', '1');
+      viewer.setAttribute('exposure', '1');
+      viewer.setAttribute('environment-image', 'neutral');
+      viewer.setAttribute('alt', model.label);
+      main.appendChild(viewer);
+    } else {
+      const missing = document.createElement('div');
+      missing.className = 'glb-missing';
+      missing.textContent = '해당 Prompt의 GLB 파일은 현재 ZIP에 포함되어 있지 않습니다.';
+      main.appendChild(missing);
+    }
+  };
+  models.forEach((model, index) => {
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.className = 'glb-card';
+    if(!model.src) button.classList.add('is-missing');
+    if(index === 0) button.classList.add('active');
+    button.innerHTML = `<b>${model.label}</b>`;
+    button.addEventListener('click', () => {
+      document.querySelectorAll('.glb-card').forEach(btn => btn.classList.remove('active'));
+      button.classList.add('active');
+      renderMain(model);
+    });
+    aside.appendChild(button);
+  });
+  wrap.appendChild(aside);
+  wrap.appendChild(main);
+  stack.appendChild(wrap);
+  const firstAvailable = models.find(m => m.src) || models[0];
+  if(firstAvailable){
+    const firstIndex = models.indexOf(firstAvailable);
+    aside.querySelectorAll('.glb-card').forEach((btn, i) => btn.classList.toggle('active', i === firstIndex));
+    renderMain(firstAvailable);
+  }
+}
+function openGlbViewer(){
+  const overlay = document.querySelector('#glbOverlay');
+  if(!overlay) return;
+  renderGlbViewer(current3dPrompt);
+  overlay.classList.add('open');
+  overlay.setAttribute('aria-hidden','false');
+  document.body.style.overflow = 'hidden';
+}
+function closeGlbViewer(){
+  const overlay = document.querySelector('#glbOverlay');
+  if(!overlay) return;
+  overlay.classList.remove('open');
+  overlay.setAttribute('aria-hidden','true');
+  document.body.style.overflow = '';
+}
+document.querySelector('#openGlbViewer')?.addEventListener('click', openGlbViewer);
+document.querySelector('#closeGlbViewer')?.addEventListener('click', closeGlbViewer);
+document.querySelector('#glbOverlay')?.addEventListener('click', (e) => { if(e.target.id === 'glbOverlay') closeGlbViewer(); });
+document.addEventListener('keydown', (e) => { if(e.key === 'Escape') closeGlbViewer(); });
 render2d(1); render3d(1); renderFails(1);
